@@ -148,24 +148,24 @@ const checkRules = (grid, i, column, neighbors) => {
   const nextGen = grid
   if (
     nextGen[i][column].stillAlive && 
-    neighbors === 2 || neighbors === 3
+    neighbors == 2 || neighbors == 3
   ) {
     // stays alive
-    nextGen[i][column].stillAlive === true;
+    nextGen[i][column].stillAlive = true;
   }
   if (
     !nextGen[i][column].stillAlive 
-    && neighbors === 3
+    && neighbors == 3
   ) {
     // bring back alive
-    nextGen[i][column].stillAlive === true; 
+    nextGen[i][column].stillAlive == true; 
   }
   if (
     nextGen[i][column].stillAlive && 
     (neighbors <= 2 || neighbors > 3)
   ) {
     // kill the cell
-    nextGen[i][column].stillAlive === false; 
+    nextGen[i][column].stillAlive == false; 
   }
   return nextGen
 }
