@@ -71,7 +71,7 @@ function gridNext (grid) {
         grid[i-1][column - 1] && 
         grid[i-1][column - 1].stillAlive === true
       ) {
-        neighbors--
+        neighbors++
       }
       // Checking north!
       if (
@@ -148,24 +148,27 @@ const checkRules = (grid, i, column, neighbors) => {
   const nextGen = grid
   if (
     nextGen[i][column].stillAlive && 
-    neighbors == 2 || neighbors == 3
+    neighbors === 2 || neighbors === 3
   ) {
     // stays alive
     nextGen[i][column].stillAlive = true;
+    console.log('rule 1')
   }
   if (
-    !nextGen[i][column].stillAlive 
-    && neighbors == 3
+    nextGen[i][column].stillAlive 
+    && neighbors === 3
   ) {
     // bring back alive
-    nextGen[i][column].stillAlive == true; 
+    nextGen[i][column].stillAlive = true; 
+    console.log('rule 2')
   }
   if (
     nextGen[i][column].stillAlive && 
-    (neighbors <= 2 || neighbors > 3)
+    (neighbors < 2 || neighbors > 3)
   ) {
     // kill the cell
-    nextGen[i][column].stillAlive == false; 
+    nextGen[i][column].stillAlive = false; 
+    console.log('rule 3')
   }
   return nextGen
 }
@@ -175,3 +178,5 @@ start();
 // [0,0] [0,1] [0,2]
 // [1,0] [1,1] [1,2]
 // [2,0] [2,1] [2,2]s
+
+
