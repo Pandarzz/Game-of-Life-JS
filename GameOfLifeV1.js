@@ -1,6 +1,6 @@
 
 function start() { 
-  const grid = createGrid(3)
+  const grid = createGrid(20)
   console.log("INITIAL GRID", grid)
   const nextGenGrid = gridNext(grid)
   console.log("NEXT GEN GRID", nextGenGrid)
@@ -145,17 +145,20 @@ function gridNext (grid) {
 
 const checkRules = (grid, i, column, neighbors) => {
 
+
   const nextGen = grid
+
+
   if (
     nextGen[i][column].stillAlive && 
-    neighbors === 2 || neighbors === 3
+    (neighbors === 2 || neighbors === 3)
   ) {
     // stays alive
     nextGen[i][column].stillAlive = true;
     console.log('rule 1')
-  }
+  } 
   if (
-    nextGen[i][column].stillAlive 
+    !nextGen[i][column].stillAlive 
     && neighbors === 3
   ) {
     // bring back alive
